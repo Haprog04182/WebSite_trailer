@@ -1,0 +1,293 @@
+*{
+    cursor: none;
+
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+:root{
+    --card-color: rgba(23, 23, 23, 0.653);
+}
+body{
+    color:white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(20,20,20);
+    min-height: 200vh;
+    width: 100vw;
+    margin:0;
+    padding: 0;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#trailer{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius:20px ;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000;
+
+    pointer-events: none;
+    opacity: 0;
+    transition: opaciti 500ms ease;
+}
+body:hover > #trailer{
+    opacity: 1;
+}
+
+header{
+    height:100vh;
+    width: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    animation: header-scroll ease forwards;
+    animation-timeline: scroll();
+    animation-range: 2px 50vh;
+}
+header > h1{
+    color: white;
+    font-size: 5em;
+    text-align: center;
+    position: absolute;
+    left: 25%;
+    top: 20px;
+}
+
+/* menu */
+#menu{
+    height:100svh;
+    display: flex;
+    align-items: center;
+}
+.menu-item{
+    color: white;
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    display: block;
+    text-decoration: none;
+    padding: clamp(0,25rem, 0.5vw, 1re) 0rem;
+    transition: .3s;
+}
+#menu-items{
+    margin-left: clamp(4rem, 20vw, 48rem);
+    position: relative;
+    z-index:2;
+}
+#menu-items:hover > .menu-item{
+    opacity: 0.3;
+}
+#menu-items:hover > .menu-item:hover{
+    opacity: 1;
+}
+
+#menu-background-pattern{
+    height: 100vh;
+    width:100vw;
+
+    background-image: radial-gradient(
+        rgba(255,255,255, 0.1) 9%,
+        transparent 9%
+    );
+    background-position: 0% 0%;
+    background-size: 12vmin 12vmin;
+    position: absolute;
+    left:0px;
+    top:0px;
+    z-index: 1;
+
+    transition: .5s;
+}
+
+#menu:hover ~ #menu-background-pattern{
+    background-size: 11vmin 11vmin;
+    opacity: .5;
+}
+
+#menu[data-active-index="0"] ~ #menu-background-pattern{
+    background-position: 0% -25%;
+}
+#menu[data-active-index="1"] ~ #menu-background-pattern{
+    background-position: 0% -50%;
+}
+#menu[data-active-index="2"] ~ #menu-background-pattern{
+    background-position: 0% -75%;
+}
+#menu[data-active-index="3"] ~ #menu-background-pattern{
+    background-position: 0% -100%;
+}
+
+#menu-background-image{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("https://wallpaper-house.com/data/out/2/wallpaper2you_20835.jpg");
+    background-repeat: no-repeat;
+
+    position: absolute;
+    left:0;
+    top:0;
+    z-index:0;
+
+    background-position: center 40%;
+    background-size: 150vmax;
+    opacity:0.15;
+
+    transition:.5s;
+}
+#menu-items:hover ~ #menu-background-image{
+    background-size: 100vmax;
+    opacity:0;
+}
+
+#menu[data-active-index="0"] ~ #menu-background-image{
+    background-position: center 45%;
+}
+#menu[data-active-index="1"] ~ #menu-background-image{
+    background-position: center 50%;
+}
+#menu[data-active-index="2"] ~ #menu-background-image{
+    background-position: center 55%;
+}
+#menu[data-active-index="3"] ~ #menu-background-image{
+    background-position: center 60%;
+}
+
+/* Section */
+section{
+    width:100%;
+    height:100svh;
+    background-color: #333;
+    margin-top: 5svh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 10px;
+}
+section > h1{
+    float: left;
+    transition: transform .2s ease;
+}
+section:hover > h1{
+    transform: scale(4);
+}
+
+#home{
+    /* background-image: url("https://images.hdqwalls.com/download/sunset-tree-red-ocean-sky-7w-2880x1800.jpg"); */
+    background-size: 100vmax;
+    background-position: center 40%;
+}
+#home{
+    background-position: center 100%;
+    background-size: 150vmax;
+}
+    .cards-content{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap:8px;
+        max-width: 916px;
+        width: calc(100% - 20px);
+    }
+    .cards-content:hover > .card > .card__border{
+        opacity: 1;
+    }
+
+    .card{
+        background-color: rgba(255,255,255, 0.01);
+        /* border:1px solid rgba(255,255,255, 0.1); */
+        border-radius: 10px;
+        position: relative;
+        height: 260px;
+        width: 300px;
+
+    }
+    .card:hover::before{
+        opacity: 1;
+    }
+    .card::before,
+    .card > .card__border{
+        opacity: 0;
+        transition:  opacity .5s;
+        border-radius: inherit;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width:100%;
+        z-index: 2;
+    }
+    .card::before{
+        background: radial-gradient(
+            800px circle at var(--mouse-x) var(--mouse-y),
+             rgba(255,255,255,.03),
+             transparent 40%
+        );
+        z-index: 3;
+    }
+    .card__border{
+        background: radial-gradient(
+            400px circle at var(--mouse-x) var(--mouse-y),
+             rgba(255,255,255,.06),
+             transparent 40%
+        );
+        z-index: 1;
+    }
+    .card > .card__content{
+        background-color: var(--card-color);
+        border-radius: inherit;
+        height:calc(100% - 2px);
+        margin: 1px;
+        width: calc(100% -2px);
+        z-index: 2;
+
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .card__content > span{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card__content > span > img{
+        width:90%;
+        height:80%;
+        opacity: 0.1;
+        transition: .2s;
+    }
+    .card__content:hover > span > img{
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+
+@keyframes header-scroll{
+    to{
+        transform: translateY(-200px);
+        opacity: 0.4;
+        z-index: -1;
+    }
+}
+
+@keyframes card-img {
+    to{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+}
