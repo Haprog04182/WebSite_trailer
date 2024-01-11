@@ -271,9 +271,11 @@ section:hover > h1{
         opacity: 0.1;
         transition: .2s;
     }
-    .card__content:hover > span > img{
-        transform: scale(1.1);
-        opacity: 1;
+    .card:hover > .card__content > span > img{
+        transform: scale(1.05);
+        opacity: 0.8;
+
+        
     }
 
 
