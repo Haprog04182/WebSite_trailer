@@ -37,3 +37,28 @@ Array.from(document.getElementsByClassName("menu-item"))
             card.style.setProperty("--mouse-y", `${y}px`);
         }
     };
+
+
+    // scroller shapeOutside: 
+
+    const scrollers = document.querySelectorAll(".scroller");
+
+    if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        addAnimation();
+    }
+    function addAnimation(){
+        scrollers.forEach(scroller => {
+            scroller.setAttribute('data-animated', true);
+
+            const scrollerInner = scroller.querySelector(".scroller__inner");
+            const scrollerContent = Array.from(scrollerInner.children);
+
+            scrollerContent.forEach( item => {
+                const dublicatedItem = item.cloneNode(true)
+                dublicatedItem.setAttribute('aria-hidden', true);
+                scrollerInner.appendChild(dublicatedItem);
+            })
+        })
+    }
+
+    // Circus))
