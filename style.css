@@ -413,12 +413,44 @@ section > h1{
         background-size: 0% 300% ;
         background-repeat: no-repeat;
 
-        animation: text-viwes linear forwards;
+        animation: text-viwes ease forwards;
         animation-timeline: view();
-        animation-range-start: cover 5vh;
+        animation-range-start: cover 10vh;
         animation-range-end: cover 75vh;
     }
 
+
+
+    footer{
+        height: 25svh;
+        display: flex;
+        justify-self: center;
+        align-items: center;
+
+    }
+
+    .link{
+        font-size: 15em;
+        text-decoration: none;
+        color: transparent;
+        background: linear-gradient(#055337 20%, #042d30);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        animation: text-views ease infinite;
+        animation-duration: 5s;
+        transition: .2s ease;
+    }
+    footer .link:hover{
+        transform: scale(1.1);
+        background-size: 110% 150%;
+    }
+    footer .link:active{
+        transform: scale(1.15);
+        filter: saturate(150%); 
+    }
 
 @keyframes text-viwes {
     to{
