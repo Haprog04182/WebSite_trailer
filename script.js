@@ -9,7 +9,7 @@ window.onmousemove = e => {
     }
 
     trailer.animate(keyframes, {
-        duration: 80,
+        duration: 8,
         fill: "forwards",
     });
 }
