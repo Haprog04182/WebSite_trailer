@@ -368,6 +368,7 @@ section > h1{
 
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .scroller{
     max-width: 800px;
